@@ -11,6 +11,16 @@ You will take a baseline installation of a Linux distribution on a virtual machi
 
 - Application URL : http://13.58.200.92.xip.io
 
+- Softwares Installed
+    - Ubuntu 16.04 LTS
+    - Python 3.5.2
+    - PostgreSQL 9.5
+    - Apache2
+    - SQLAlchemy
+    - Flask
+    - Oauth2Client
+    - psycopg2
+
 ## Step followed 
 
 ### Secure the Server
@@ -39,6 +49,7 @@ You will take a baseline installation of a Linux distribution on a virtual machi
    - `sudo ufw allow 2200/tcp`
    - `sudo ufw allow www`
    - `sudo ufw allow ntp`
+   - `sudo ufw deny 22`
 
 4.  New User Grader
    - Create new user grader
