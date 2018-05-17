@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Employee Catalog</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'styles/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'styles/style.css')}}">
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="content container">
+            <div class="row header-row">
+                <div class="col-md-2">
+                    <figure>
+                        <img class="logo" src="{{ url_for('static', filename = 'images/eagles.png')}}" alt="Logo">
+                    </figure>
+                </div>
+                <div class="col-md-10 title">
+                    <p>Employee Catalog</p>
+                </div>
+            </div>
+            <div class="row seperator">
+                <div class="col-md-12">
+                    <hr>
+                </div>
+            </div>
+            {% block content %}
+            {% endblock %}
+            <div class="row seperator">
+                 <div class="col-md-12">
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <footer>
+                        <p class="copy">Copyright © Vasudha Lalit <br>
+                           Contact information: <a href="mailto:vasudhalalit@eagles.com">vasudhalalit@eagles.com</a> <br>
+                           <a href="#" class="fa fa-linkedin"></a> <a href="#" class="fa fa-facebook"></a></p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </body>
