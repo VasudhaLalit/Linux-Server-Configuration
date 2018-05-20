@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class='row'>
+        <div class="col-md-4">
+            <h3>Departments</h3>
+        </div>
+        <div class="col-md-8">
+            <h3> Recently added employees </h3>
+
+            <!--MESSAGE FLASHING EXAMPLE -->
+            <h5>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul>
+                            {% for message in messages %}
+                                <li>{{message}}</li>
+                            {% endfor %}
+                   </ul>
+                    {% endif %}
+                {% endwith %}
+            </h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            {% for dept in all_dept %}
+               <p><a href ={{url_for('get_dept_data', dept_id=dept.id)}}>{{dept.dept_name}}</a> </p>
+            {% endfor %}
+
+        </div>
+        <div class = "col-md-8">
+            {% for emp in emp_catalog %}
+                <p><a href = {{url_for('get_emp_details', emp_id =emp.id)}}>{{ emp.name}}</a></p>
+            {%endfor %}
+        </div>
+    </div>
+    <div class = 'row'>
+        <table>
+            <tbody>
+                <tr>
+                    <td><a href = {{url_for('employee_catalog')}} >Home</a></td>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><a href = {{url_for('create_new_emp') }} >Create new employee record</a></td>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><a href= {{url_for('gdisconnect')}}>Log Out</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ {% endblock %}

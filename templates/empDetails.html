@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='row'>
+       <div class="col-md-4">
+            <h3>Departments</h3>
+            {% for dept in all_dept %}
+               <p><a href ={{url_for('get_dept_data', dept_id=dept.id)}}>{{dept.dept_name}}</a> </p>
+            {% endfor %}
+       </div>
+       <div class = "col-md-8">
+         <h3>Employee Details - {{emp_details.name}}</h3>
+        <p> Emp id - {{ emp_details.id }} </p>
+        <p> Department - {{ dept_name}} </p>
+        <p> Role - {{ emp_details.designation}} </p>
+        <p> Compensation - $ {{ emp_details.salary}} </p>
+        <p> Desk Phone - {{emp_details.desk_ph}}</p>
+        <p> Email - {{emp_details.emp_email}}</p>
+        <p> City/State - {{emp_details.city_state}}</p>
+        <p> Start Date - {{emp_details.start_date}}</p>
+        <p> End Date - {{emp_details.end_date}}</p>
+        <p> Update Date - {{emp_details.updated_on}}</p>
+        <p> Reporting Manager - {{emp_details.reporting_manager}}</p>
+        <form action="{{url_for('edit_emp_rec', emp_id = emp_details.id)}}">
+               <input type = 'submit' value = 'Update'>
+        </form>
+        <br>
+        <form action="{{url_for('del_emp_rec', emp_id = emp_details.id)}}">
+               <input type = 'submit' value = 'Remove'>
+        </form>
+
+    </div>
+</div>
+<div class="row">
+    <a href = {{url_for('employee_catalog')}} >Home</a>
+</div>
+{% endblock %}
