@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Archive Employee Record</h3>
+
+<p>Do you want to archive below employee record?</p>
+
+<form action="{{ url_for('del_emp_rec', emp_id=arc_rec.id)}}" method = 'post'>
+	{{arc_rec.name}}
+	<br>
+	<br>
+	<input type = 'submit' value='Confirm'>
+</form>
+<br>
+
+<form action='{{url_for('employee_catalog')}}'><input type = 'submit' value = 'Cancel'></form>
+
+<br>
+<div class="row">
+	<a href = {{url_for('employee_catalog')}} >Home</a>
+</div>
+{% endblock %}
