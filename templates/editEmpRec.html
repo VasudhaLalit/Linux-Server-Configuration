@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='row'>
+    <div class="col-md-3">
+    <h3>Departments</h3>
+    {% for dept in all_dept %}
+    <p><a href ={{url_for('get_dept_data', dept_id=dept.id)}}>{{dept.dept_name}}</a> </p>
+    {% endfor %}
+</div>
+<div class = "col-md-9">
+    <h3>Update Employee Record</h3>
+        <form action="{{ url_for('edit_emp_rec', emp_id=edt_rec.id)}}" method = 'post'>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Name :</td> 
+                        <td><input type = 'text' size = '50' name = 'name' placeholder = '{{edt_rec.name}}'></td>
+                    </tr>
+                    <tr>
+                        <td>Role:</td>
+                        <td><input type = 'text' size = '30' name='designation' placeholder = '{{edt_rec.designation}}'></td>
+                    </tr>
+                    <tr>
+                        <td>Compensation : $</td>
+                        <td><input type = 'text' size = '10' name='salary' placeholder = '{{edt_rec.salary}}'></td>
+                    </tr>
+                    <tr>
+                        <td>Department :</td>
+                        <td><select name='department'>
+                                <option value = ''>{{dept_name}}</option>
+                                <option value = 'HR'>HR</option>
+                                <option value = 'Finance'>Finance</option>
+                                <option value = 'Sales'>Sales</option>
+                                <option value = 'Marketing'>Marketing</option>
+                                <option value = 'Information technology'>Information technology</option>
+                                <option value = 'Admin'>Admin</option>
+                                <option value = 'Support'>Support</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Desk Phone :</td>
+                        <td><input type = 'text' size = '12' name='desk_ph' placeholder = '{{edt_rec.desk_ph}}'></td>
+                    </tr>
+                    <tr>
+                        <td>Email : </td>
+                        <td><input type = 'text' size = '50' name='emp_email' placeholder = '{{edt_rec.emp_email}}'></td>
+                    </tr>
+                    <tr>
+                        <td>City/State : </td>
+                        <td><input type = 'text' size = '30' name= 'city_state' placeholder = '{{edt_rec.city_state}}'></td>
+                    </tr>
+                    <tr>
+                        <td>Reporting Manager :</td>
+                        <td><input type = 'text' size = '50' name= 'reporting_manager' placeholder = '{{edt_rec.reporting_manager}}'></td>
+                    </tr>
+                    <tr>
+                        <td><input type = 'submit' value='Confirm'></td>
+                    </tr>
+                </tbody> 
+            </table>
+        </form>
+        <br>
+        <form action='{{url_for('employee_catalog')}}'><input type = 'submit' value = 'Cancel'></form>
+    </div>
+</div>
+<div class="row">
+    <a href = {{url_for('employee_catalog')}} >Home</a>
+</div>
+
+{% endblock %}

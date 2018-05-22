@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+           
+<div class='row'>
+    <div class="col-md-4">
+        <h3>Departments</h3>
+    </div>
+    <div class = "col-md-8">
+	    <h3>New Employee Record</h3>
+	                <!--MESSAGE FLASHING EXAMPLE -->
+            <h5>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul>
+                            {% for message in messages %}
+                                <li>{{message}}</li>
+                            {% endfor %}
+                   </ul>
+                    {% endif %}
+                {% endwith %}
+            </h5>
+    </div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		{% for dept in all_dept %}
+           <p><a href ="{{url_for('get_dept_data', dept_id=dept.id)}}">{{dept.dept_name}}</a> </p>
+        {% endfor %}
+    </div>
+    <div class="col-md-8">
+    	<form action ="{{url_for('create_new_emp')}}" , method = 'POST'>
+        	<table>
+            	<tbody>
+                	<tr>
+                    	<td>Name :</td> 
+	                    <td><input type ='text' size = '50'  name = 'name' placeholder="" required></td>
+	            	</tr>
+	            	<tr>
+	            		<td>Role :</td>
+	                	<td><input type = 'text' size = '30' name='designation' required></td>
+	                </tr>
+	            	<tr>
+	            		<td>Compensation : $</td>
+	            		<td><input type = 'text' size = '10' name='salary' required></td>
+	            	</tr>
+	            	<tr>
+	            		<td>Department :</td>
+	            		<td>
+	            			<select name='department' placeholder= "" required>
+			                    <option value = 'HR'>HR</option>
+			                    <option value = 'Finance'>Finance</option>
+			                    <option value = 'Sales'>Sales</option>
+			                    <option value = 'Marketing'>Marketing</option>
+			                    <option value = 'Information technology'>Information technology</option>
+			                    <option value = 'Admin'>Admin</option>
+			                    <option value = 'Support'>Support</option>
+		                	</select>
+		                </td>
+	            	</tr>
+	            	<tr>
+	            		<td>Desk Phone :</td>
+	            		<td><input type = 'text' size = '12' name= 'desk_ph' required></td>
+	            	</tr>
+	            	<tr>
+	            		<td>Email :</td>
+	            		<td><input type = 'text' size = '30' name= 'emp_email' required></td>
+	            	</tr>
+	            	<tr>
+	            		<td>City/State :</td>
+	            		<td><input type = 'text' size = '30' name= 'city_state' required></td>
+	            	</tr>
+	            	<tr>
+	            		<td>Reporting Manager :</td>
+	            		<td><input type = 'text' size = '50' name= 'reporting_manager' required></td>
+	            	</tr>
+	            	<tr>
+	            		<td><input type = 'submit' value = 'Submit'></td>
+	            		<td></td>
+	             	</tr>
+	            </tbody>
+	        </table>
+	    </form>
+	    <br>
+   		<form action ="{{url_for('employee_catalog')}}"><input type = 'submit' value = 'Cancel'></form>
+	</div>
+</div>
+<div class="row">
+    <a href = "{{url_for('employee_catalog')}}">Home</a>
+</div>
+
+{% endblock %}
